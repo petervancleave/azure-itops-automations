@@ -1,1 +1,10 @@
+// Query 1: Verify Host Connectivity
+Heartbeat
+| summarize LastSeen = max(TimeGenerated) by Computer
+| order by LastSeen desc
 
+// Query 2: CPU Utilization Trend
+Perf
+| where CounterName == "% Processor Time"
+| summarize AverageCPU = avg(CounterValue) by Computer, bin(TimeGenerated, 5m)
+| order by TimeGenerated desc
