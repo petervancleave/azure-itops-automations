@@ -17,9 +17,7 @@ IT administrators regularly respond to repetitive infrastructure issues such as 
 
 ## Architecture
 
-INCLUDE ARCHITECTURE DIAGRAM HERE
-
-
+<img width="1168" height="784" alt="n0xFB" src="https://github.com/user-attachments/assets/3154cf10-312b-445c-8651-d58b02e3f17f" />
 
 
 ---
