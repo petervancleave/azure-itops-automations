@@ -80,8 +80,16 @@ Cost Management
 -> Add
 ```
 
+<img width="1891" height="714" alt="firefox_6oVg1TRUxn" src="https://github.com/user-attachments/assets/81aac580-9e98-4001-9290-42a626014446" />
+
+
 - Name the budget `IT-Automation-MVP` with an amount of $100 (or whatever works for you).
 - Set alert thresholds at **25%**, **50%**, **75%**, and **90%** to monitor spending
+
+<img width="1632" height="836" alt="firefox_Q4aCDKEBMA" src="https://github.com/user-attachments/assets/1a2eb4a4-d7b0-4b81-a638-31d46cce7266" />
+
+<img width="1655" height="830" alt="firefox_Q64ms9GESg" src="https://github.com/user-attachments/assets/d66498ab-c4a6-416b-9845-98f7ad041a2a" />
+
 
 Azure budgets just act as alerts, so they do not automatically prevent resource spending. The biggest spending concern will be the VM we provision.
 
@@ -94,6 +102,10 @@ Resource Groups
 -> Create
 ```
 
+<img width="1889" height="898" alt="firefox_fY7gFqDLnR" src="https://github.com/user-attachments/assets/f4f3f136-2dc7-4dc5-b624-3a5916a6aadf" />
+
+<img width="1890" height="786" alt="firefox_RikilE2LFu" src="https://github.com/user-attachments/assets/90d74eb3-da52-4cb1-80fb-ccb2f5089f70" />
+
 Use:
 
 ```
@@ -101,12 +113,19 @@ Resource group:
 rg-itops-mvp
 ```
 
+<img width="759" height="394" alt="firefox_6FpKPo2yTo" src="https://github.com/user-attachments/assets/718ffb0d-57d0-4fde-81b3-f9f8804c713d" />
+
+
 Add tags if wanted:
 
 ```
 Project = ITOperationsAutomation 
 Environment = Lab
 ```
+<img width="891" height="508" alt="firefox_f3YSZ6Q8u1" src="https://github.com/user-attachments/assets/93a7ad3d-f5f7-4942-b5f2-77a33d1a3bef" />
+
+<img width="540" height="869" alt="firefox_ySVyzVy38U" src="https://github.com/user-attachments/assets/9cdd99c1-662d-472a-8510-1aa228798271" />
+
 
 # 3. Create the Windows Server VM
 
@@ -120,22 +139,40 @@ Virtual Machines
 -> Azure Virtual Machine
 ```
 
+<img width="569" height="801" alt="firefox_U6Jascf9OB" src="https://github.com/user-attachments/assets/bddd57be-796c-4804-a60e-f398d80b45a8" />
+
+
 **Name:**
 Name it `vm-itops-01`
+
+<img width="970" height="862" alt="firefox_PZ7vJzoKJz" src="https://github.com/user-attachments/assets/bfff34f9-c244-4b6f-bd58-21e05cd6c3fe" />
+
+
 
 **Image:**
 For the image I chose `[smalldisk] Windows Server 2022 Datacenter: Azure Edition Core -x64 Gen 2`
 This ensures smaller resource pull and Core allows us only a cli.
+
+<img width="1454" height="831" alt="firefox_LwxzPjKlR7" src="https://github.com/user-attachments/assets/d6ed069a-eb58-472f-a554-090be83a1e35" />
+
 
 **Size:**
 Small B-series like Standard_B1s is ideal,  ended up using a D-series since I chose US East 2 as my region.
 
 No GUI is needed for this VM since we will only be using it to run PowerShell and monitor CPU usage.
 
+<img width="806" height="341" alt="firefox_F3sOT1XLIg" src="https://github.com/user-attachments/assets/c0ba84bd-7f87-436b-bd82-e5e927932008" />
+
+<img width="1515" height="786" alt="firefox_5fnG9VpAc5" src="https://github.com/user-attachments/assets/ffe2bad8-5c27-492f-9655-2cacaef8d5b7" />
+
+
 # 4. Secure RDP
 
 - Navigate to the VM's Network Security Group
 - Edit inbound security rules to restrict TCP port 3389 from `Any / Internet` and ensure it allows only to `My IP Address`
+
+<img width="1016" height="692" alt="firefox_H7nkknMNhg" src="https://github.com/user-attachments/assets/d02429c7-fcbe-4152-9099-5c144ea18c6a" />
+
 
 # 5. Configure Auto Shutdown
 
@@ -147,6 +184,9 @@ Operations
 ```
 
 Set the time to when you want it to auto shutdown in your local timezone. 
+
+<img width="826" height="244" alt="firefox_UFXJZwO2ed" src="https://github.com/user-attachments/assets/d9edbee6-d0ac-4b0f-bd51-62021b2b019c" />
+
 
 *Auto shutdown is useful, but always be sure to manually click STOP (Deallocate) on the VM when done working to save money.*
 
