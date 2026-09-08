@@ -1,3 +1,7 @@
+# Azure IT Operations Automation Platform
+
+---
+
 
 This is a guide and walkthrough of how to build an Azure-based IT operations lab with infrastructure monitoring, PowerShell automation, incident management, and workflow automation.
 
