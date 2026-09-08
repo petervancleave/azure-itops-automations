@@ -195,9 +195,17 @@ Set the time to when you want it to auto shutdown in your local timezone.
 - RDP into `vm-itops-01`
 - Open Powershell and verify baseline commands:
 
+<img width="1920" height="1080" alt="mstsc_irKFASFxa8" src="https://github.com/user-attachments/assets/78d81016-e779-426f-8707-627221d67454" />
+
+<img width="1920" height="1080" alt="mstsc_HidueOkqNA" src="https://github.com/user-attachments/assets/a9b54498-31a8-42d4-9442-472b180a42ba" />
+
+
 ```
 hostname
 ```
+
+<img width="1920" height="1080" alt="mstsc_Jld6guOU44" src="https://github.com/user-attachments/assets/458f8542-f57f-477a-8749-1cb1226a34a5" />
+
 
 then:
 
@@ -216,6 +224,9 @@ then:
 ```
 Get-Service | Select-Object -First 20
 ```
+
+<img width="1295" height="656" alt="mstsc_rMlIDTWpe4" src="https://github.com/user-attachments/assets/e0cc7391-f585-4646-bb4f-66104382168c" />
+
 
 # 7. Create the first Powershell Script
 
@@ -245,6 +256,9 @@ You should see:
 ```
 powershell
 ```
+
+<img width="1295" height="656" alt="mstsc_qT1c5HATQV" src="https://github.com/user-attachments/assets/176c4f22-cd78-4d96-8c8a-65ee55992b34" />
+
 
 Because we are using the Core version of the VM, we don't have a graphical way available to create the file. This means we must create the file directly from PowerShell. Run:
 
@@ -371,6 +385,9 @@ FreeMemoryGB   : 5.23
 Disks          : {@{Drive=C:; SizeGB=127.99; FreeGB=98.42; UsedPercent=23.1}}
 ```
 
+<img width="1295" height="656" alt="mstsc_A4ltA1ZuHD" src="https://github.com/user-attachments/assets/c05e8096-38a7-46a0-9d9a-b4b214b9be56" />
+
+
 The numbers will be different.
 
 You can format PowerShell output into an easier to read table if you wish with the following:
@@ -421,6 +438,9 @@ catch {
 }
 ```
 
+<img width="1295" height="656" alt="mstsc_kKVzNqfAru" src="https://github.com/user-attachments/assets/e168bada-2917-4537-9093-d15853fb2d3b" />
+
+
 Pick a standard service. You can see some available with the following command:
 
 ```ps1
@@ -444,6 +464,9 @@ The `Status` column should show as `Stopped`
 
 I chose to use the DeviceInstall service.
 
+<img width="1301" height="714" alt="mstsc_D7cCu5xu5v" src="https://github.com/user-attachments/assets/cc3a292f-c616-4966-8156-bfb362871960" />
+
+
 Next, run the remediation script:
 
 ```ps1
@@ -461,15 +484,23 @@ Result       : SUCCESS
 Timestamp    : 5/5/2025 8:40:00 AM
 ```
 
+<img width="720" height="299" alt="mstsc_jod4LBThUw" src="https://github.com/user-attachments/assets/66fee157-d77b-45ed-b058-7738bc9fc2d5" />
+
+
 # 10. Create Log Analytics Workspace
 
 - Navigate to Log Analytics in the Azure Portal
 
 In the top search bar of the Azure Portal, type **Log Analytics workspaces** and select it from the list.
 
+<img width="1694" height="889" alt="firefox_hb9LGWno1N" src="https://github.com/user-attachments/assets/a00f2fae-ba86-4954-9ca2-4313910996b4" />
+
+
 - Configure basic settings
 
 Click **+ Create** (or **+ New**). Select **rg-itops-mvp** as the Resource Group. Enter **`law-itops-mvp`** in the **Name** field, and pick your local region (e.g., _East US_ or _West US_).
+
+<img width="849" height="876" alt="ceZWc13S4J" src="https://github.com/user-attachments/assets/bce0f92c-8efd-4320-91ba-922ac6884d7b" />
 
 - Review and create
 
@@ -482,6 +513,9 @@ Once it is deployed, click **Go to resource** and confirm the top summary bar di
 - Go to your Virtual Machine (**vm-itops-01**). Under the left-hand menu, scroll to the **Monitoring** section and select **Insights**.
 - Click the **Enable** button. Ensure the configuration installs the **Azure Monitor Agent (AMA)** and sets the destination workspace to **`law-itops-mvp`**.
 - Accept the default Data Collection Rule (DCR) prompt created by the wizard and click **Configure**
+
+<img width="1429" height="866" alt="firefox_rZ1ln103Rp" src="https://github.com/user-attachments/assets/08af98c8-5a18-427f-80d8-6dfc0e43e372" />
+
 
 *Wait 5-10 minutes for extension provisioning. Keep refreshing the page as needed until the insights performance charts begin populating.*
 
@@ -497,9 +531,15 @@ Heartbeat
 | take 20
 ```
 
+<img width="1893" height="841" alt="firefox_7qHWETCWEp" src="https://github.com/user-attachments/assets/4f3f29aa-f4b3-4030-9e1f-606660065aff" />
+
+
 - Click the blue **RUN** button
 
 You should see the VM. The Heartbeat table should receive a record roughly every minute when the agent is communicating correctly.
+
+<img width="1561" height="811" alt="firefox_W5NacudvsS" src="https://github.com/user-attachments/assets/9b78566c-324d-415d-b0bd-809c573e47cf" />
+
 
 # 13. Save KQL Queries
 
@@ -523,8 +563,19 @@ Execute Query 2 in the Azure Log Analytics portal to ensure CPU metrics are reco
 # 14. Create Azure Automation
 
 - In the portal search bar, search for **Automation Accounts** and click **+ Create**.
+
+<img width="1896" height="864" alt="firefox_jr6GNGctug" src="https://github.com/user-attachments/assets/53b3ba30-d956-47d1-9f96-32fe48f4b4bb" />
+
+
 - Set Resource Group to **`rg-itops-mvp`**, set Name to **`aa-itops-mvp`**, and choose your matching Azure Region.
+
+<img width="1890" height="817" alt="firefox_pHK6cM4RK6" src="https://github.com/user-attachments/assets/02ab4d49-d91e-48f3-8d8c-fc1b7a17053a" />
+
+
 - On the **Advanced** tab, ensure **System-assigned identity** is checked (**On**). Click **Review + Create**, then **Create**.
+
+<img width="1821" height="295" alt="firefox_jBWreREVr6" src="https://github.com/user-attachments/assets/93708d6d-2144-4a42-ad4b-f36a484dbf60" />
+
 
 You can verify by navigating to `aa-itops-mvp` -> **Identity** (under Account Settings) and verify that the **Status** tab under _System assigned_ displays **On** with an assigned Object ID.
 
@@ -540,16 +591,31 @@ For example, if the runbook needs to interact with your VM's Azure resources, as
 - Click **Access control (IAM)** in the left menu.
 - Click **+ Add** -> **Add role assignment**.
 - Select the **Contributor** role (or _Virtual Machine Contributor_) and click **Next**.
+
+<img width="1843" height="560" alt="firefox_IVrkp8f7zh" src="https://github.com/user-attachments/assets/c73b3dcc-5fa0-4e14-bbe4-7aa4484bc4ab" />
+
+
 - Select **Managed identity** under _Assign access to_.
 - Click **+ Select members**, set _Managed identity_ to **Automation Account**, pick **`aa-itops-mvp`**, and click **Select**.
 - Click **Review + assign**.
+
+<img width="1903" height="865" alt="firefox_9BwtucEQjL" src="https://github.com/user-attachments/assets/6afeddf6-99d3-440a-95d1-e8329cd3566d" />
+
 
 Click **Role assignments** inside IAM, search for `aa-itops-mvp`, and verify it appears with the assigned role scoped to `rg-itops-mvp`.
 
 # 16. Create a runbook
 
 - Inside **aa-itops-mvp**, select **Runbooks** under _Process Automation_, then click **+ Create a runbook**
+
+<img width="1562" height="823" alt="firefox_bW2C0AyJIS" src="https://github.com/user-attachments/assets/ba219ee9-bc81-4dff-ad61-e0d4d7f06cae" />
+
+
 - Set Name to **`ServiceRecovery`**, Runbook type to **PowerShell**, and Runtime version to **7.2** (or 5.1). Click **Create**.
+
+<img width="920" height="606" alt="firefox_ub7cPBihFZ" src="https://github.com/user-attachments/assets/ee1b0425-3fc8-49bb-beed-c5736ad4b0a5" />
+
+  
 - In the editor screen, put the following:
 
 ```ps1
@@ -561,17 +627,28 @@ Write-Output "Authenticated successfully via Managed Identity."
 Get-AzResourceGroup -Name "rg-itops-mvp" -DefaultProfile $Context
 ```
 
+<img width="1911" height="718" alt="firefox_u79AArZeHZ" src="https://github.com/user-attachments/assets/33213cff-eab8-4d9c-8b22-37bd8d3d8a59" />
+
+
 Click **Test pane**, then click **Start**. Wait for the output pane to show `Authenticated successfully...`. Click **X** to close the test pane, then click **Publish** -> **Yes**.
+
+<img width="1717" height="757" alt="firefox_R61VR9xLt6" src="https://github.com/user-attachments/assets/a8cfe9fc-d5a6-44a4-aa46-1a92742ea7b5" />
+
 
 Select the published runbook, click **Start**, navigate to **Jobs**, and confirm the status transitions to **Completed**.
 
-# 17. Create an Azure Monitor Alert and Action Group
+<img width="1424" height="455" alt="firefox_pKRaVuV4j9" src="https://github.com/user-attachments/assets/e99cc6db-8106-47b9-9e7b-1846856300b3" />
 
+
+# 17. Create an Azure Monitor Alert and Action Group
 
 Start Alert Rule Creation: vm-itops-01.
 1. In the Azure Portal, navigate to **Virtual machines** $\rightarrow$ **`vm-itops-01`**.
 2. Under **Monitoring** on the left menu, select **Alerts**.
 3. Click **+ Create** at the top and select **Alert rule**.
+
+<img width="1265" height="687" alt="firefox_EABirQJ0Bl" src="https://github.com/user-attachments/assets/26947d67-4d16-4653-96e7-86907b542600" />
+
 
 Set Low Threshold Condition:Condition Tab.
 
@@ -583,6 +660,10 @@ Set Low Threshold Condition:Condition Tab.
     - **Aggregation type:** `Average`
     - **Threshold value:** `5` _(Set to 5% so normal activity triggers it easily during testing)_
     - **Unit:** `Percent`
+
+<img width="1650" height="786" alt="firefox_4L9Rvv2yzZ" src="https://github.com/user-attachments/assets/6ed8f634-3126-433d-974b-1b76ded1da1a" />
+
+      
 4. Scroll down to **Evaluation granularity**:
     
     - **Aggregation granularity (Period):** `1 minute`
@@ -592,16 +673,20 @@ Set Low Threshold Condition:Condition Tab.
 Create the Action Group (ag-itops-mvp): Actions Tab.
 
 1. On the **Actions** tab, click **+ Create action group**.
-2. In the **Basics** tab of the wizard:
+
+<img width="1748" height="655" alt="firefox_TeyqZKGP8l" src="https://github.com/user-attachments/assets/5d79c97f-9cd5-4a9d-8fe0-d254f2cb09c7" />
+
+
+3. In the **Basics** tab of the wizard:
     - **Resource group:** `rg-itops-mvp`
     - **Action group name:** `ag-itops-mvp`
     - **Display name:** `AgItOps`
-3. Click **Next: Notifications**.
-4. Configure the notification details:
+4. Click **Next: Notifications**.
+5. Configure the notification details:
     - **Notification type:** Select **Email/SMS message/Push/Voice**.
     - **Name:** `AdminEmail`
     - Check the **Email** box, enter your personal email address, and click **OK**.
-5. Click **Review + create**, then click **Create**.
+6. Click **Review + create**, then click **Create**.
 
 Finalize and Save the Alert Rule: Details Tab.
 
@@ -613,22 +698,40 @@ Finalize and Save the Alert Rule: Details Tab.
     - **Advanced options:** Leave _Automatically resolve alerts_ checked.
 4. Click **Review + create**, then click **Create**.
 
+<img width="1217" height="570" alt="firefox_gTTQE9l8US" src="https://github.com/user-attachments/assets/56250d8e-029c-474f-a281-117bdca25dd8" />
+
+
 Now in the VM console run this command which loops to generate a mild CPU spike and trip the threshold:
 
 ```ps1
 while ($true) { $i++ }
 ```
 
+<img width="1301" height="714" alt="mstsc_Rkpl7dZZPp" src="https://github.com/user-attachments/assets/d7dd7cf9-b9ac-4b55-80db-bf8a5731e425" />
+
+
 Let it run for a few minutes
 
+<img width="1883" height="542" alt="firefox_RSjUqZ7Hhr" src="https://github.com/user-attachments/assets/c0893491-c470-4ca3-b17a-f1db8ee55109" />
+
+
 Check your email inbox. You should receive an email from **Azure Monitor Alerts** subject line containing `Alert-HighCPU-MVP`
+
+<img width="1053" height="884" alt="olk_QeXMJ8ZjJa" src="https://github.com/user-attachments/assets/a6bab29e-da6d-481b-81d9-df73ec4ada6e" />
+
+
 # 18. Set Up Microsoft List For Incidents
 
 - Go to [make.powerautomate.com](https://make.powerautomate.com) or [portal.office.com](https://portal.office.com) and open **Lists** (or SharePoint).
 
+<img width="1848" height="916" alt="l7q310zTlK" src="https://github.com/user-attachments/assets/daf1ff34-88d9-40b1-9d52-66324bcdfec9" />
+
+
 Click **+ New list** $\rightarrow$ **Blank list**.
 - **Name:** `IT Operations Incidents`
 - Click **Create**.
+
+<img width="1859" height="762" alt="firefox_baIvm7H9Ne" src="https://github.com/user-attachments/assets/61109512-1854-4ce2-b030-18d9b27683df" />
 
 - Add columns to match schema like so:
 
@@ -647,14 +750,25 @@ Click **+ New list** $\rightarrow$ **Blank list**.
 # 19. Build Power Automate Flow
 
 - Navigate to [make.powerautomate.com](https://make.powerautomate.com).
+
+<img width="1487" height="684" alt="firefox_J9yMZM7Zch" src="https://github.com/user-attachments/assets/fe31ade5-3d06-4f5f-9e84-b7a3080632b2" />
+
+
 - On the left menu, click **+ Create** $\rightarrow$ **Automated cloud flow**.
 - **Flow name:** `IT Operations Incident Flow`
 - **Trigger:** Search for `When a new email arrives (V3)` (Office 365 Outlook) and select it.
 - Click **Create**.
 
+<img width="897" height="574" alt="firefox_WizR7CeSUl" src="https://github.com/user-attachments/assets/448a8fc3-c444-434e-bd9c-b0a6d7e07d62" />
+
+
 Now we need an email trigger:
 
 - Search for trigger **When a new email arrives (V3)**. Add a Subject Filter for **`Azure Monitor Alert`** to avoid triggering on unrelated emails.
+
+<img width="1906" height="848" alt="firefox_GwOUkoaraI" src="https://github.com/user-attachments/assets/296a5b73-64d0-4de9-b8ba-3286413ad0b9" />
+
+
 - Add action **Create item (SharePoint / Microsoft Lists)**. Point to your site address and select list **`IT Operations Incidents`**.
 
 Map the list fields as follows:
@@ -666,11 +780,26 @@ Map the list fields as follows:
 - **Severity:** `High`
 - **Status:** `Open`
 
+
+<img width="674" height="674" alt="firefox_GNuzmZOL0t" src="https://github.com/user-attachments/assets/433978a3-86cb-48fb-b782-87263b1b70be" />
+
+
+
 Now a notification step:
 
-Add a final action: **Send an email notification (V3)**. Set recipient to your email address with body text stating: _"Incident created in tracking list for review."_ Click **Save**.
+Add a final action: **Send an email notification (V2)**. Set recipient to your email address with body text stating: _"Incident created in tracking list for review."_ Click **Save**.
+
+
+<img width="775" height="551" alt="firefox_vUAUDCkUW5" src="https://github.com/user-attachments/assets/8dd4de6d-1159-49d5-b9df-7023ec7f5a19" />
+
+<img width="1486" height="647" alt="firefox_Tw7MdPeSpq" src="https://github.com/user-attachments/assets/3ac90247-d52f-423f-a58c-0eb242f7df4c" />
+
 
 To verify it is working, trigger an Azure Monitor alert, wait for the email, and verify that a new record automatically appears in your _IT Operations Incidents_ list.
+
+<img width="788" height="364" alt="olk_bzJiM7NMWx" src="https://github.com/user-attachments/assets/0df7e35a-4b67-494a-83be-49924be50e20" />
+
+<img width="1849" height="738" alt="firefox_PllezW9oIo" src="https://github.com/user-attachments/assets/9b92a2da-9197-48fa-b4f4-47f414ba1056" />
 
 
 
